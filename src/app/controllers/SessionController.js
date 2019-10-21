@@ -49,13 +49,11 @@ class SessionController {
       // Payload é usado quando se quer reutilzar o token na aplicação
       // Geralmente insere-se uma informação relacionada ao usuário, como a id
       // O segundo parâmetro é um código MD5 único gerado normalmente com um texto aleatório
-      // Nesta aula: bootcampRSmodulo2gobarber
       // O terceiro parãmetro indica a duração do token (recomendado)
       // Nota: o segundo e o terceiro parâmetros foram incluídos num arquivo importado na linha 5
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
       }),
-      // ATENÇÃO: Se for colocar esse código no Github, remover o comentário anterior!!!
     });
   }
 }

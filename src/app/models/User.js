@@ -19,7 +19,7 @@ class User extends Model {
     this.addHook('beforeSave', async user => {
       if (user.password) {
         // Na função hash do bycript, o primeiro segundo argumento indica a força da criptografia.
-        // Segundo o Diego, o número 8 é razoável, números maiores deixariam a aplicação lenta.
+        // O número 8 é razoável, números maiores deixariam a aplicação lenta.
         user.password_hash = await bcrypt.hash(user.password, 8);
       }
     });
