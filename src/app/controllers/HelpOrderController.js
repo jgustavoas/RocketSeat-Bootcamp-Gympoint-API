@@ -4,7 +4,10 @@ import Student from '../models/Student';
 import HelpOrder from '../models/HelpOrder';
 import HelpOrderSchema from '../schemas/HelpOrder';
 
-import Mail from '../../lib/Mail';
+// import Mail from '../../lib/Mail'; usando dentro com a biblioteca Queue
+
+import Queue from '../../lib/Queue';
+import HelpOrderReplyMail from '../jobs/HelpOrderReplyMail';
 
 class HelpOrderController {
   async index(req, res) {
@@ -86,14 +89,12 @@ class HelpOrderController {
       _id: req.params.id,
     });
 
-    const { question, question_id, student, email, createdAt } = pedidoDeAjuda;
+    const { question_id } = pedidoDeAjuda;
 
     const { answer } = req.body;
 
-    // return res.json(format(new Date(), "yyyy'-'mm'-'dd' 'hh:mm:ss"));
-
-    // Enviar resposta
-    const enviarResposta = await Mail.sendMail({
+    // "const enviarResposta" substituido pelo "job" na Queue mais abaixo
+    /* const enviarResposta = await Mail.sendMail({
       to: `${student} <${email}>`,
       subject: `Resposta da sua dúvida #${question_id}`,
       template: 'replyHelpOrder',
@@ -105,6 +106,12 @@ class HelpOrderController {
           locale: pt,
         }),
       },
+    }); */
+
+    const enviarResposta = await Queue.add(HelpOrderReplyMail.key, {
+      pedidoDeAjuda,
+      answer,
+      pt,
     });
 
     if (enviarResposta) {
