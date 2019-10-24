@@ -92,7 +92,7 @@ class HelpOrderController {
 
     const { answer } = req.body;
 
-    // Abaixo: "const enviarResposta" substituido pelo "job" na Queue em seguida
+    // Logo abaixo: "const enviarResposta" foi substituido pelo "job" na Queue na da linha 110
     /* const enviarResposta = await Mail.sendMail({
       to: `${student} <${email}>`,
       subject: `Resposta da sua dúvida #${question_id}`,

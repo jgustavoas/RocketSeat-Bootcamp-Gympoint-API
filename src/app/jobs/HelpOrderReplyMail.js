@@ -12,7 +12,7 @@ class HelpOrderReplyMail {
     return 'HelpOrderReplyMail';
   }
 
-  // Criando um método para ser exucutado quando o job for designado
+  // Criando um método para ser executado quando o job for designado
   async handle({ data }) {
     const { pedidoDeAjuda, answer } = data;
 

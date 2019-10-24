@@ -14,8 +14,8 @@ class Queue {
   }
 
   /**
-   * Lógica: inicia-se uma instância da classe "Queue".
-   * Para cada job da array jobs, coloca-se seu item (key) no objeto "this.queues"
+   * Lógica: inicia-se uma instância da classe "Queue"
+   * Para cada (forEach) job da array jobs coloca-se seu item (key) no objeto "this.queues"
    * Cada uma dessas queues (this.queues[]) tem sua fila e se conecta com o db Redis
    * O método que vai realizar a tarefa é nomeado de "handle", que neste caso é o envio do e-mail   */
   init() {
