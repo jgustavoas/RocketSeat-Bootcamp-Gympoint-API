@@ -70,7 +70,6 @@ class HelpOrderController {
      * Guardar o pedido de ajuda no MongoDB
      */
     await HelpOrderSchema.create({
-      // Note que não é convecionado no MongoDB não usar variáveis dinâmicas que mudariam o conteúdo da mensagem quando fosse alteradas
       question,
       question_id,
       student_id: id,
@@ -93,7 +92,7 @@ class HelpOrderController {
 
     const { answer } = req.body;
 
-    // "const enviarResposta" substituido pelo "job" na Queue mais abaixo
+    // Abaixo: "const enviarResposta" substituido pelo "job" na Queue em seguida
     /* const enviarResposta = await Mail.sendMail({
       to: `${student} <${email}>`,
       subject: `Resposta da sua dúvida #${question_id}`,

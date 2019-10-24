@@ -14,11 +14,10 @@ class Queue {
   }
 
   /**
-   * Lógica: inicia-se uma instância da classe Queue e, para cada job da array jobs,
-   * coloca-se sua key no objeto this.queues e cada uma dessa queues tem sua fila,
-   * que nesse caso é a conexão com o db Redis e o método que vai realizar a tarefa de fato,
-   * neste caso nomeada de "handle" e que é o envio do e-mail
-   */
+   * Lógica: inicia-se uma instância da classe "Queue".
+   * Para cada job da array jobs, coloca-se seu item (key) no objeto "this.queues"
+   * Cada uma dessas queues (this.queues[]) tem sua fila e se conecta com o db Redis
+   * O método que vai realizar a tarefa é nomeado de "handle", que neste caso é o envio do e-mail   */
   init() {
     jobs.forEach(({ key, handle }) => {
       // Por que forEach e não map()? Porque não precisa retornar algo
@@ -32,8 +31,8 @@ class Queue {
   }
 
   /**
-   * add(), adiciona na fila a key "CancellationMail" como primeiro parâmetro
-   * e também os dados do agenamento ("appointment") como segundo parâmetro
+   * add(), adiciona na fila a key "HelpOrderReplyMail" como primeiro parâmetro
+   * e também os dados da mensagem como segundo parâmetro
    */
   add(queue, job) {
     return this.queues[queue].bee.createJob(job).save();

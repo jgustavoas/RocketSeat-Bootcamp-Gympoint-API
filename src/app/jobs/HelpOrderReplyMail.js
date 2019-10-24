@@ -5,8 +5,8 @@ import Mail from '../../lib/Mail';
 
 class HelpOrderReplyMail {
   // Usando o recurso get é possível o usuário acessar uma determinada propriedade
-  // sem precisar identificá-la exatamente, neste caso chamando apenas CancellationMail.key
-  // Isso é útil para retornar variáveis de fácil acesso sem precisar criar um constructor
+  // sem precisar identificá-la exatamente, neste caso chamando apenas HelpOrderReplyMail.key
+  // Isto é útil para retornar variáveis de fácil acesso sem precisar criar um constructor
   get key() {
     // Chave única para cada job
     return 'HelpOrderReplyMail';
