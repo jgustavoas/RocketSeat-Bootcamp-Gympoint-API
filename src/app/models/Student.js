@@ -10,10 +10,14 @@ class Student extends Model {
         peso: Sequelize.DECIMAL(10, 2),
         altura: Sequelize.DECIMAL(10, 2),
       },
-      { sequelize, modelName: 'students' }
+      { sequelize }
     );
 
     return this;
+  }
+
+  static associate(models) {
+    this.hasMany(models.HelpOrder, { foreignKey: 'id' });
   }
 }
 
