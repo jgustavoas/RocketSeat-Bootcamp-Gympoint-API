@@ -1,2 +1,2 @@
-# RocketSeat-Bootcamp-Gympoint
-Desafio dos módulos 02 e 03
+# Rocketseat, Gympoint
+Desafio dos módulos 02 e 03 no Bootcamp
