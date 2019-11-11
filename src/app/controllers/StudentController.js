@@ -2,10 +2,32 @@
 // O asterisco significa que vai ser importado tudo do pacote e colocado na variável
 // O pacote Yup é usado para validação
 import * as Yup from 'yup';
-
+import { Op } from 'sequelize';
 import Student from '../models/Student';
 
 class StudentController {
+  async index(req, res) {
+    const whereLike = req.query.name ? req.query.name : '';
+
+    const aluno = await Student.findAll({
+      where: {
+        nome: {
+          [Op.like]: `%${whereLike}%`,
+        },
+      },
+    });
+
+    if (!aluno) {
+      return res
+        .status(400)
+        .json({ error: 'Nenhum aluno localizado no cadastro!' });
+    }
+
+    // const { id, nome, email } = aluno;
+
+    return res.json(aluno);
+  }
+
   async store(req, res) {
     // Usando o Yup para validar
     const schema = Yup.object().shape({

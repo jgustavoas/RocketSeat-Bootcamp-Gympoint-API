@@ -7,7 +7,9 @@ import Matriculation from '../models/Matriculation';
 class MatriculationController {
   async index(req, res) {
     // Testando variáveis com acentuação
-    const matrículas = await Matriculation.findAll();
+    const matrículas = await Matriculation.findAll({
+      attributes: ['id', 'start_date', 'end_date', 'price', 'active'],
+    });
     return res.json({ matrículas });
   }
 
